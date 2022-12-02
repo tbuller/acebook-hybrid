@@ -7,7 +7,7 @@ const Profile = ({ navigate }) => {
         <h1>Profile Page</h1>
       </div>
       <div>
-        <body></body>
+        <body>Hi</body>
       </div>
     </>
   );
