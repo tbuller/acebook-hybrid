@@ -25,11 +25,15 @@ const Feed = ({ navigate }) => {
     window.localStorage.removeItem("token");
     navigate("/login");
   };
+  const profile = () => {
+    navigate("/profile");
+  };
 
   if (token) {
     return (
       <>
         <h2>Posts</h2>
+        <button onClick={profile}>Profile</button>
         <button onClick={logout}>Logout</button>
         <div id="feed" role="feed">
           {posts.map((post) => (

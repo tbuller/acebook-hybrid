@@ -1,8 +1,9 @@
-
 import "./App.css";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../user/SignUpForm";
 import NewPostForm from "../post/NewPostForm";
+import Home from "../home/Home";
+import Profile from "../profile/Profile"
 import React, { useState } from "react";
 import Feed from "../feed/Feed";
 import { useNavigate, Routes, Route } from "react-router-dom";
@@ -17,9 +18,10 @@ const App = () => {
         path="/new_post"
         element={<NewPostForm navigate={useNavigate()} />}
       />
+      <Route path="/" element={<Home navigate={useNavigate()} />} />
+      <Route path="/profile" element={<Profile navigate={useNavigate()} />} />
     </Routes>
   );
 };
-
 
 export default App;
