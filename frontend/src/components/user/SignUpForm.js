@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullname, setFullname] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,7 +13,7 @@ const SignUpForm = ({ navigate }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: email, password: password }),
+      body: JSON.stringify({ fullname: fullname, email: email, password: password }),
     }).then((response) => {
       if (response.status === 201) {
         navigate("/login");
@@ -30,8 +31,19 @@ const SignUpForm = ({ navigate }) => {
     setPassword(event.target.value);
   };
 
+  const handleFullnameChange = (event) => {
+    setFullname(event.target.value);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
+      <input
+        placeholder="Full name"
+        id="fullname"
+        type="text"
+        value={fullname}
+        onChange={handleFullnameChange}
+      />
       <input
         placeholder="Email"
         id="email"
