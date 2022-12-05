@@ -22,7 +22,7 @@ describe("Navigating to profile", () => {
     cy.get("#root > :nth-child(2)").click();
     cy.url().should("include", "/profile");
 
-    cy.get("root > :nth-child(2)").click();
+    cy.get("button").click();
     cy.url().should("include", "/posts");
   })
 });
