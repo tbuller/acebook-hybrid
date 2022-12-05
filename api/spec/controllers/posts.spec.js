@@ -99,10 +99,11 @@ describe("/posts", () => {
       expect(posts[0].message).toEqual("hello world");
       expect(posts[0].posterUserId).toEqual(userIdTest);
       expect(posts[0].comments.length).toEqual(0);
+      let postId = posts[0]._id;
       await request(app)
         .post("/comments")
         .set("Authorization", `Bearer ${token}`)
-        .send({ comment: "hello world", token: token });
+        .send({ postId: postId, comment: "hello world comment", token: token });
       let allPosts = await Post.find();
       console.log(allPosts[0].comments);
       expect(allPosts[0].comments.length).toEqual(1);
