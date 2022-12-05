@@ -12,23 +12,22 @@ const Profile = ({ navigate }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({fullname: fullname})
+      body: JSON.stringify({ fullname: fullname }),
     }).then((response) => {
-      console.log(response)
+      console.log(response);
       if (response.status === 201) {
         navigate("/login");
-        console.log("We did it!")
+        console.log("We did it!");
       } else {
         navigate("/signup");
-        console.log("Back to the drawing board")
+        console.log("Back to the drawing board");
       }
     });
   };
 
-
   const handleFullnameChange = (event) => {
     setFullname(event.target.value);
-  }
+  };
 
   const feed = () => {
     navigate("/posts");
@@ -40,12 +39,12 @@ const Profile = ({ navigate }) => {
         <h1>Profile Page</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <input 
-        placeholder="Fullname" 
-        id="fullname" 
-        type="text"
-        value={fullname}
-        onChange={handleFullnameChange}
+        <input
+          placeholder="Fullname"
+          id="fullname"
+          type="text"
+          value={fullname}
+          onChange={handleFullnameChange}
         />
         <input id="submit" type="submit" value="Submit" />
       </form>
