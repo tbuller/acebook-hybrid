@@ -11,6 +11,24 @@ const UsersController = {
       }
     });
   },
+
+  UpdateUser: (req, res) => {
+    req.body.UserId = req.user_id;
+    User.findByIdAndUpdate(
+      req.body.userId,
+      {
+        $push: {
+          fullname: req.body.fullname
+        },
+      },
+      async (err) => {
+        if (err) {
+          throw err;
+        }
+        const token = await TokenGenerator.jsonwebtoken(req.user_id);
+        res.status(201).json({ message: OK, token: token });
+      });
+    }
 };
 
 module.exports = UsersController;

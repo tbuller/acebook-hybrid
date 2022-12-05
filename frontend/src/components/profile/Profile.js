@@ -7,7 +7,7 @@ const Profile = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch("/users", {
+    fetch("/profiles", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -16,8 +16,6 @@ const Profile = ({ navigate }) => {
     }).then((response) => {
       console.log(response)
       if (response.status === 201) {
-      //  window.localStorage.setItem("token", data.token);
-      //  setToken(window.localStorage.getItem("token"));
         navigate("/login");
         console.log("We did it!")
       } else {
