@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import NewCommentForm from "../post/NewComment";
+import PostDisplay from "../post/PostDisplay";
 
 
 const Feed = ({ navigate }) => {
@@ -28,6 +29,10 @@ const Feed = ({ navigate }) => {
   const logout = () => {
     window.localStorage.removeItem("token");
     navigate("/login");
+  };
+
+  const PostDisplay = () => {
+    navigate("/postdisplay");
   };
 
   const like = (post_id) => {
@@ -70,6 +75,9 @@ const Feed = ({ navigate }) => {
                 }}
               >
                 Like
+              </button>
+              <button
+                onClick={PostDisplay}>View Post
               </button>
             </div>
           ))}
