@@ -38,25 +38,23 @@ describe("/users", () => {
       });
       let users = await User.find();
       let newUser = users[users.length - 1];
-      // console.log(users);
-      // console.log(newUser.email);
       expect(newUser.fullname).toEqual("jeffjeffs");
     });
-    test("a user's fullname can be edited", async () => {
-      const user = new User({ email: "test@test.com", password: "12345678", fullname: "jeffjeffs" });
-      await user.save();
-      token = TokenGenerator.jsonwebtoken(user.id);
 
-      let users = await User.find();
-      let newUser = users[users.length - 1];
-      expect(newUser.fullname).toEqual("jeffjeffs");
-      
-      await request(app).post("/profiles").send({
-        fullname: "Scarlet Actually",
-        token: token,
+    test("a user's fullname can be edited", async () => {
+      const user = new User({
+        email: "scarlett@email.com",
+        password: "1234",
+        fullname: "jeffjeffs",
       });
-      console.log("test hello")
-      expect(newUser.fullname).toEqual("Scarlet Actually"); //THIS FAILS BUT PROBABLY SHOULDN'T, CHECK USING POSTMAN
+      await user.save();
+      token = await TokenGenerator.jsonwebtoken(user.id);
+      await request(app)
+        .post("/profiles")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ fullname: "Scarlet Actually", token: token });
+      let users = await User.find();
+      expect(users[users.length - 1].fullname).toEqual("Scarlet Actually");
     });
   });
 

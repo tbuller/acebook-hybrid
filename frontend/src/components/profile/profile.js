@@ -20,10 +20,8 @@ const Profile = ({ navigate }) => {
         window.localStorage.setItem("token", data.token);
         setToken(window.localStorage.getItem("token"));
         navigate("/profile");
-        console.log("We did it!");
       } else {
         navigate("/login");
-        console.log("Back to the drawing board");
       }
     });
   };

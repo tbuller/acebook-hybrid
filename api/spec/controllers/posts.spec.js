@@ -105,7 +105,7 @@ describe("/posts", () => {
         .set("Authorization", `Bearer ${token}`)
         .send({ postId: postId, comment: "hello world comment", token: token });
       let allPosts = await Post.find();
-      console.log(allPosts[0].comments);
+      // console.log(allPosts[0].comments);
       expect(allPosts[0].comments.length).toEqual(1);
     });
   });
