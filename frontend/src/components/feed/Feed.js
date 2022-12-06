@@ -32,7 +32,7 @@ const Feed = ({ navigate }) => {
 
   const like = (post_id) => {
     console.log(`liked ${post_id}`);
-    const response = fetch("/likes", {
+    fetch("/likes", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
