@@ -31,7 +31,9 @@ const Feed = ({ navigate }) => {
     navigate("/login");
   };
 
-  const PostDisplay = () => {
+  const PostDisplay = (post_id) => {
+    console.log(`post id test ${post_id}`)
+    
     navigate("/postdisplay");
   };
 
@@ -76,9 +78,15 @@ const Feed = ({ navigate }) => {
               >
                 Like
               </button>
+              
               <button
-                onClick={PostDisplay}>View Post
-              </button>
+                
+               key={`view post button ${post._id}`}
+               
+               onClick={PostDisplay}>View Post
+
+               </button>
+            
             </div>
           ))}
         </div>
