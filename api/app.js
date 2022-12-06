@@ -9,6 +9,7 @@ const tokensRouter = require("./routes/tokens");
 const usersRouter = require("./routes/users");
 const commentsRouter = require("./routes/comments");
 const likesRouter = require("./routes/likes")
+const profilesRouter = require("./routes/profiles")
 
 
 const app = express();
@@ -31,7 +32,7 @@ const tokenChecker = (req, res, next) => {
 
   JWT.verify(token, process.env.JWT_SECRET, (err, payload) => {
     if (err) {
-      //console.log(err);
+      console.log(err);
       res.status(401).json({ message: "auth error" });
     } else {
       req.user_id = payload.user_id;
@@ -46,7 +47,7 @@ app.use("/comments", tokenChecker, commentsRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
 app.use("/likes", tokenChecker, likesRouter);
-//app.use("/", homeRouter);
+app.use("/profiles", tokenChecker, profilesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
