@@ -7,7 +7,7 @@ const renderRecentComment = (post) => {
   return (
   <article data-cy="post" key={post._id}>
     MOST RECENT COMMENT:
-    {post.comments[post.comments.length - 1].user} ADDED A COMMENT:{" "}
+    {post.comments[post.comments.length - 1].user.fullname} ADDED A COMMENT:{" "}
     {post.comments[post.comments.length - 1].comment} ON:{" "}
     {new Date(post.comments[post.comments.length - 1].time)
       .toString()
