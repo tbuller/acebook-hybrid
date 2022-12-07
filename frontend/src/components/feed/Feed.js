@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import NewCommentForm from "../post/NewComment";
 
-
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
@@ -23,7 +22,7 @@ const Feed = ({ navigate }) => {
           setPosts(data.posts);
         });
     }
-  }, []);
+  }, []); //how to change this from a referenced other component? eg in NewCommentForm
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -39,7 +38,7 @@ const Feed = ({ navigate }) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ post_id: post_id }),
-    })
+    });
     fetch("/posts", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -62,7 +61,7 @@ const Feed = ({ navigate }) => {
           {posts.map((post) => (
             <div>
               <Post post={post} key={post._id} />
-              <NewCommentForm post={post} key={post._id} />         
+              <NewCommentForm post={post} key={post._id} />
               <button
                 key={`like button ${post._id}`}
                 onClick={() => {
