@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import styles from "./Home.css"
 
 const Home = ({navigate}) => {    
   return (
     <>
+    <head>
+    </head>
     <div>
       <h1>Hello there!</h1>
     </div>
