@@ -1,33 +1,56 @@
 import React, { useEffect, useState } from "react";
+import Post from "../post/Post";
 
 const Profile = ({ navigate }) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUserInfo] = useState("");
+  const [userPosts, setUserPosts] = useState([]);
   const [password, setPassword] = useState("");
   const [aboutMe, setAboutMe] = useState("");
-  //add more consts here
-
+  const [isChanging, setIsChanging] = useState("");
+  
   useEffect(() => {
     if (token) {
-      fetch("/profiles", {
-        //need a new get route or not? and what function will handle and return?
+      getUserDoc()
+      getUserPosts();
+  }
+},[isChanging]); //add dependency into the blank array here to get page refreshing automatically
+
+  const getUserDoc = () => {
+    fetch("/profiles", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(async (data) => {
+        window.localStorage.setItem("token", data.token);
+        setToken(window.localStorage.getItem("token"));
+        setUserInfo(data.userInfo);
+      });
+    };
+    
+    const getUserPosts = () => {
+      fetch("/myPosts", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => response.json())
-        .then(async (data) => {
-          window.localStorage.setItem("token", data.token);
-          setToken(window.localStorage.getItem("token"));
-          setUserInfo(data.userInfo); //  .user might not be right, check response
-        });
-    }
-  }, []);
+      .then((response) => response.json())
+      .then(async (data2) => {
+        window.localStorage.setItem("token", data2.token);
+        setToken(window.localStorage.getItem("token"));
+        setUserPosts(data2.posts);
+        setIsChanging(false)
+      });
+    };
+    
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsChanging(true)
     let fieldUpdate;
     if (fullname.length > 0) {
       fieldUpdate = { fullname: fullname };
@@ -142,10 +165,17 @@ const Profile = ({ navigate }) => {
               value="Update your About Me info"
             />
           </form>
-          <p>
-            - A list of the posts I have made - A list of my friends - And
-            hopefully get this page autorefreshing content after update.
-          </p>
+        </div>
+        <div id="myPostFeed" role="myFeed">
+          <p></p>
+          BELOW ARE ALL MY POSTS
+          <p></p>
+          {userPosts.map((post) => (
+            <div>
+              <Post post={post} key={post._id} />
+              <p></p>
+            </div>
+          ))}
         </div>
       </>
     );
