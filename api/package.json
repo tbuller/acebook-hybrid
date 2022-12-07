@@ -1,7 +1,6 @@
 {
   "name": "acebook",
   "version": "0.0.0",
-  "homepage": "https://acebook-frontend.onrender.com/",
   "description": "Template for the AceBook project",
   "license": "CC BY-NC-SA",
   "private": true,
