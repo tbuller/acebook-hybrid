@@ -142,7 +142,7 @@ const Profile = ({ navigate }) => {
               placeholder="Enter new password..."
               id="password"
               type="text"
-              value={email}
+              value={password}
               onChange={handlePasswordChange}
             />
             <input id="submit" type="submit" value="Update your password" />
