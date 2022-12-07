@@ -14,24 +14,32 @@ const UsersController = {
   },
   UpdateUser: (req, res) => {
     req.body.UserId = req.user_id;
-    User.findByIdAndUpdate(
-      //ERROR LIES HERE
-      req.user_id,
-      { fullname: req.body.fullname },
-      //$push: only works to add item into an array rather than just update a field
-      // {
-      //   $push: {
-      //     fullname: req.body.fullname,
-      //   },
-      // },
-      async (err) => {
-        if (err) {
-          throw err;
-        }
-        const token = await TokenGenerator.jsonwebtoken(req.user_id);
-        res.status(201).json({ message: "OK", token: token }); //OK here needed to be in quotes
+    let updateObj;
+    if (req.body.fullname) {
+      updateObj = { fullname: req.body.fullname };
+    } else if (req.body.email) {
+      updateObj = { email: req.body.email };
+    } else if (req.body.password) {
+      updateObj = { password: req.body.password };
+    } else if (req.body.aboutMe) {
+      updateObj = { aboutMe: req.body.aboutMe };
+    }
+    User.findByIdAndUpdate(req.user_id, updateObj, async (err) => {
+      if (err) {
+        throw err;
       }
-    );
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(201).json({ message: "OK", token: token }); //OK here needed to be in quotes
+    });
+  },
+  ShowUser: (req, res) => {
+    User.findById(req.user_id, async (err, userInfo) => {
+      if (err) {
+        throw err;
+      }
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ userInfo: userInfo, token: token });
+    });
   },
 };
 
