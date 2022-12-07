@@ -1,12 +1,14 @@
 {
   "name": "acebook",
   "version": "0.0.0",
+  "homepage": "https://acebook-frontend.onrender.com/",
   "description": "Template for the AceBook project",
   "license": "CC BY-NC-SA",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
     "start:test": "MONGODB_URL='mongodb://0.0.0.0/acebook_test' npm start",
+    "start:cloud": "MONGODB_URL='mongodb+srv://timb2:securepassword@cluster0.5xd1mal.mongodb.net/acebook-test?retryWrites=true&w=majority' npm start",
     "test": "jest --runInBand"
   },
   "engines": {
