@@ -12,7 +12,7 @@ const SignUpForm = ({ navigate }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: email, password: password }),
+      body: JSON.stringify({ email: email, password: password, photo: "./default.jpeg" }),
     }).then((response) => {
       if (response.status === 201) {
         navigate("/login");

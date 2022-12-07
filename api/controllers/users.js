@@ -23,6 +23,8 @@ const UsersController = {
       updateObj = { password: req.body.password };
     } else if (req.body.aboutMe) {
       updateObj = { aboutMe: req.body.aboutMe };
+    } else if (req.body.photo) {
+      updateObj = { photo: req.body.photo };
     }
     User.findByIdAndUpdate(req.user_id, updateObj, async (err) => {
       if (err) {

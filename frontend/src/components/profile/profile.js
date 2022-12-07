@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
+import UploadAndDisplayImage from "./UploadPhoto";
 
 const Profile = ({ navigate }) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
@@ -10,13 +11,15 @@ const Profile = ({ navigate }) => {
   const [password, setPassword] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [isChanging, setIsChanging] = useState("");
-  
+  const [selectedImage, setSelectedImage] = useState(null);
+
+
   useEffect(() => {
     if (token) {
-      getUserDoc()
+      getUserDoc();
       getUserPosts();
-  }
-},[isChanging]); //add dependency into the blank array here to get page refreshing automatically
+    }
+  }, [isChanging]); //add dependency into the blank array here to get page refreshing automatically
 
   const getUserDoc = () => {
     fetch("/profiles", {
@@ -30,27 +33,26 @@ const Profile = ({ navigate }) => {
         setToken(window.localStorage.getItem("token"));
         setUserInfo(data.userInfo);
       });
-    };
-    
-    const getUserPosts = () => {
-      fetch("/myPosts", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+  };
+
+  const getUserPosts = () => {
+    fetch("/myPosts", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then(async (data2) => {
         window.localStorage.setItem("token", data2.token);
         setToken(window.localStorage.getItem("token"));
         setUserPosts(data2.posts);
-        setIsChanging(false)
+        setIsChanging(false);
       });
-    };
-    
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsChanging(true)
+    setIsChanging(true);
     let fieldUpdate;
     if (fullname.length > 0) {
       fieldUpdate = { fullname: fullname };
@@ -99,6 +101,10 @@ const Profile = ({ navigate }) => {
   const feed = () => {
     navigate("/posts");
   };
+
+/////1 switch what's presented to be selectedImage, which starts off being user.photo until changed
+  ////2 
+
   if (token) {
     return (
       <>
@@ -106,7 +112,40 @@ const Profile = ({ navigate }) => {
           <h1>Profile Page</h1>
           <button onClick={feed}>Go to Feed</button>
         </div>
-        <p>Hello, {user.fullname}!</p>
+        <img src={user.photo} width={300} height={300} alt="default" />
+        {/* {setSelectedImage(user.photo)} */}
+        {/* <img
+          src={URL.createObjectURL(selectedImage)}
+          width={300}
+          height={300}
+          alt="default"
+        /> */}
+        {/* {URL.createObjectURL(selectedImage)} */}
+        <h2>Hello, {user.fullname}!</h2>
+        {/* <UploadAndDisplayImage key="something" /> */}
+        <p>Upload a new profile photo</p>
+        {selectedImage && (
+          <div>
+            <img
+              alt="not found"
+              width={"250px"}
+              src={URL.createObjectURL(selectedImage)}
+            />
+            <br />
+            <button onClick={() => setSelectedImage(null)}>Remove</button>
+          </div>
+        )}
+        <input
+          type="file"
+          name="myImage"
+          onChange={(event) => {
+            console.log(event.target.files[0]);
+            //somehow update what I need on the User document in Mongo with a fetch POST request with photo: event.target.files[0] as a string
+            setSelectedImage(event.target.files[0]);
+          }}
+        />
+        <br />
+        <br />
         <form onSubmit={handleSubmit}>
           <input
             placeholder="Enter new name..."
