@@ -1,21 +1,24 @@
 * {
-    font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background-color: #6e4922;
-    padding: 20px 10px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #6e4922;
+  padding: 20px 10px;
+  margin-bottom: 20px;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
-background {
-    background-image: url()
+.background {
+  background-image: url("Mud-block.jpeg");
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
