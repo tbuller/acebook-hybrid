@@ -6,6 +6,7 @@ const Profile = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [user, setUserInfo] = useState("");
   const [password, setPassword] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
   //add more consts here
 
   useEffect(() => {
@@ -34,8 +35,9 @@ const Profile = ({ navigate }) => {
       fieldUpdate = { email: email };
     } else if (password.length > 0) {
       fieldUpdate = { password: password };
+    } else if (aboutMe.length > 0) {
+      fieldUpdate = { aboutMe: aboutMe };
     }
-
     fetch("/profiles", {
       method: "post",
       headers: {
@@ -67,6 +69,10 @@ const Profile = ({ navigate }) => {
     setPassword(event.target.value);
   };
 
+  const handleAboutMeChange = (event) => {
+    setAboutMe(event.target.value);
+  };
+
   const feed = () => {
     navigate("/posts");
   };
@@ -93,7 +99,7 @@ const Profile = ({ navigate }) => {
           <form onSubmit={handleSubmit}>
             <input
               placeholder="Enter new email..."
-              id="fullname"
+              id="email"
               type="text"
               value={email}
               onChange={handleEmailChange}
@@ -111,7 +117,7 @@ const Profile = ({ navigate }) => {
           <form onSubmit={handleSubmit}>
             <input
               placeholder="Enter new password..."
-              id="fullname"
+              id="password"
               type="text"
               value={email}
               onChange={handlePasswordChange}
@@ -119,10 +125,26 @@ const Profile = ({ navigate }) => {
             <input id="submit" type="submit" value="Update your password" />
           </form>
           <p>
-                    Below you will soon see: A field 'About me' providing a Bio (already in Schema)
-                    - A list of the posts I have made
-                    - A list of my friends
-                    - And hopefully get this page autorefreshing content after update.
+            What you're currently telling other people about yourself:{" "}
+            {user.aboutMe}
+          </p>
+          <form onSubmit={handleSubmit}>
+            <input
+              placeholder="Enter new bio..."
+              id="aboutMe"
+              type="text"
+              value={aboutMe}
+              onChange={handleAboutMeChange}
+            />
+            <input
+              id="submit"
+              type="submit"
+              value="Update your About Me info"
+            />
+          </form>
+          <p>
+            - A list of the posts I have made - A list of my friends - And
+            hopefully get this page autorefreshing content after update.
           </p>
         </div>
       </>
