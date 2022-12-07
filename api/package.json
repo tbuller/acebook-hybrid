@@ -7,6 +7,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "start:test": "MONGODB_URL='mongodb://0.0.0.0/acebook_test' npm start",
+    "start:cloud": "MONGODB_URL='mongodb+srv://timb2:securepassword@cluster0.5xd1mal.mongodb.net/acebook-test' npm start",
     "test": "jest --runInBand"
   },
   "engines": {
