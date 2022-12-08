@@ -33,7 +33,7 @@ app.get('/*', function(req,res) {
 // middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {
   if (req.method === "OPTIONS") {
-    req.sendStatus(200);
+    res.sendStatus(200);
   }
   let token;
   const authHeader = req.get("Authorization");
