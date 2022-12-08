@@ -1,5 +1,6 @@
 * {
   font-family: "Courier New", Courier, monospace;
+  text-align: center;
 }
 
 header {
@@ -7,18 +8,44 @@ header {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: #6e4922;
+  background-color: #2f7c0b;
   padding: 20px 10px;
   margin-bottom: 20px;
 }
 
-body {
-  margin: 0;
+.container{
+    display: contents;
+    flex-direction: column;
+    width: 25vw;
+    text-align: center;
+    align-items: center
 }
 
-.background {
-  background-image: url("Mud-block.jpeg");
-  max-width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #2f2003;
+  width: 25vw;
+  text-align: center;
+  align-items: center
+}
+
+h1, p {
+    text-align: center;
+}
+
+button {
+    padding: 0.75em;
+    border: none;
+    outline: none;
+    background-color: rgb(87, 84, 96);
+    color: white;
+    border-radius: 0.25em;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(139, 133, 159); 
+    box-sizing: border-box;
 }
