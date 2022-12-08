@@ -3,9 +3,8 @@ import "./Home.css";
 
 const Home = ({ navigate }) => {
   return (
-    <>
-      <head></head>
-      <div class="container">
+    <div className="Auth-form-container">
+      <div className="Auth-form-content">
         <h1>Welcome to the Mineshaft!</h1>
       </div>
       <div>
@@ -19,7 +18,7 @@ const Home = ({ navigate }) => {
           </a>
         </body>
       </div>
-    </>
+    </div>
   );
 };
 

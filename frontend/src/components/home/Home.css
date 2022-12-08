@@ -12,12 +12,26 @@ header {
   margin-bottom: 20px;
 }
 
-.container{
-    display: contents;
-    flex-direction: column;
-    width: 25vw;
-    text-align: center;
-    align-items: center
+.Auth-form-content {
+  padding-bottom: 10%;
+  padding-left: 85%;
+  padding-right: 12%;
+}
+
+.Auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: contents;
+  flex-direction: column;
+  width: 25vw;
+  text-align: center;
+  align-items: center;
 }
 
 body {
@@ -32,22 +46,23 @@ body {
   text-align: center;
 }
 
-h1, p {
-    text-align: center;
+h1,
+p {
+  text-align: center;
 }
 
 button {
-    padding: 0.75em;
-    margin: 15px;
-    border: none;
-    outline: none;
-    background-color: rgb(87, 84, 96);
-    color: white;
-    border-radius: 0.25em;
+  padding: 0.75em;
+  margin: 15px;
+  border: none;
+  outline: none;
+  background-color: rgb(87, 84, 96);
+  color: white;
+  border-radius: 0.25em;
 }
 
 button:hover {
-    cursor: pointer;
-    background-color: rgb(139, 133, 159); 
-    box-sizing: border-box;
+  cursor: pointer;
+  background-color: rgb(139, 133, 159);
+  box-sizing: border-box;
 }
