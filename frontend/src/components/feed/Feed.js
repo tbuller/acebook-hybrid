@@ -5,8 +5,8 @@ import Post from "../post/Post";
 import NewCommentForm from "../post/NewComment";
 import { useNavigate } from "react-router-dom";
 
-const Feed = ({  }) => {
-  const navigate = useNavigate()
+const Feed = ({}) => {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
@@ -14,6 +14,7 @@ const Feed = ({  }) => {
     if (token) {
       fetch("https://acebook-api.onrender.com/posts", {
         headers: {
+          "Access-Control-Allow-Origin": "*",
           Authorization: `Bearer ${token}`,
         },
       })
@@ -37,12 +38,14 @@ const Feed = ({  }) => {
       method: "post",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ post_id: post_id }),
     });
     fetch("https://acebook-api.onrender.com/posts", {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     })
