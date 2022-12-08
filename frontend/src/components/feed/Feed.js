@@ -12,7 +12,7 @@ const Feed = ({  }) => {
 
   useEffect(() => {
     if (token) {
-      fetch("/posts", {
+      fetch("https://acebook-api.onrender.com/posts", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +33,7 @@ const Feed = ({  }) => {
 
   const like = (post_id) => {
     console.log(`liked ${post_id}`);
-    fetch("/likes", {
+    fetch("https://acebook-api.onrender.com/likes", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Feed = ({  }) => {
       },
       body: JSON.stringify({ post_id: post_id }),
     });
-    fetch("/posts", {
+    fetch("https://acebook-api.onrender.com/posts", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

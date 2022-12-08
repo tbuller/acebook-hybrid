@@ -7,7 +7,7 @@ const NewCommentForm = ({ navigate, post }) => {
   const commentSubmit = async (event) => {
     event.preventDefault();
 
-    fetch("/comments", {
+    fetch("https://acebook-api.onrender.com/comments", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

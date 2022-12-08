@@ -11,7 +11,7 @@ const NewPostForm = ({}) => {
 
     console.log(content);
 
-    fetch("/posts", {
+    fetch("https://acebook-api.onrender.com/posts", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

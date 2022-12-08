@@ -9,7 +9,7 @@ const LogInForm = ({  }) => {
     
     event.preventDefault();
 
-    let response = await fetch("/tokens", {
+    let response = await fetch("https://acebook-api.onrender.com/tokens", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

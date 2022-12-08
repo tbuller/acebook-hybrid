@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const url = process.env.proxyAddress
+
 
 const SignUpForm = ({ }) => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const SignUpForm = ({ }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch(`${url}/users`, {
+    fetch(`https://acebook-api.onrender.com/users`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
