@@ -58,8 +58,6 @@ const LogInForm = ({ navigate }) => {
                 className="form-control mt-1"
               />
             </div>
-            <div>
-            </div>
             <div className="form-group mt-3">
               <label>Password</label>
               <input
