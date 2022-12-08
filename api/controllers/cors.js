@@ -1,6 +1,6 @@
 const Cors = {
-Options: (res, req) => {
-  res.status(200)
-}
-}
-module.exports = Cors
+  Options: (req, res) => {
+    res.status(200);
+  },
+};
+module.exports = Cors;
