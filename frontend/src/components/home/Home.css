@@ -1,4 +1,4 @@
-/* * {
+* {
   font-family: "Courier New", Courier, monospace;
 }
 
@@ -38,6 +38,7 @@ h1, p {
 
 button {
     padding: 0.75em;
+    margin: 15px;
     border: none;
     outline: none;
     background-color: rgb(87, 84, 96);
@@ -49,4 +50,4 @@ button:hover {
     cursor: pointer;
     background-color: rgb(139, 133, 159); 
     box-sizing: border-box;
-} */
+}

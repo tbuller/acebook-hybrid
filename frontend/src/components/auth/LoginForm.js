@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LoginForm.css";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ const LogInForm = ({ navigate }) => {
         <h3 className="Auth-form-title">Log In</h3>
         <div className="form-group mt-3">
           <form onSubmit={handleSubmit} className="Auth-form">
-            <div className="form-group mt-3">
+            <div className="form-group mt-2">
               <label>Email Address</label>
               <input
                 placeholder="Email"
@@ -56,6 +57,8 @@ const LogInForm = ({ navigate }) => {
                 onChange={handleEmailChange}
                 className="form-control mt-1"
               />
+            </div>
+            <div>
             </div>
             <div className="form-group mt-3">
               <label>Password</label>
