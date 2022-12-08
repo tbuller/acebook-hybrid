@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-const Home = ({navigate}) => {    
+import { Link } from "react-router-dom";
+
+const Home = ({ navigate }) => {
   return (
     <>
-    <div>
-      <h1>Hello there!</h1>
-    </div>
-    <div>
+      <div>
+        <h1>Hello there!</h1>
+      </div>
+      <div>
         <body>
-            <p>Select below where you'd like to go</p>
-            <a href="/login"><button>Login</button></a>
-            <a href="/signup"><button>Sign up</button></a>
+          <p>Select below where you'd like to go</p>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button>Sign up</button>
+          </Link>
         </body>
-    </div>
+      </div>
     </>
   );
-}
-
-
+};
 
 export default Home;

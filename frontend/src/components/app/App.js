@@ -7,7 +7,7 @@ import Profile from "../profile/profile";
 import Home from "../home/Home";
 import React, { useState } from "react";
 import Feed from "../feed/Feed";
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 
 const App = () => {
   return (
