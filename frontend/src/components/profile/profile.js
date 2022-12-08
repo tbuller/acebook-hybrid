@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
+import { useNavigate } from "react-router-dom";
 
-const Profile = ({ navigate }) => {
+const Profile = ({ }) => {
+  const navigate = useNavigate()
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");

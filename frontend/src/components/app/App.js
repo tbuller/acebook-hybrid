@@ -12,18 +12,25 @@ import { useNavigate, Routes, Route, Link } from "react-router-dom";
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Home navigate={useNavigate()} />} /> 
-      <Route path='/profile' element={<Profile navigate={useNavigate()} />} /> 
-      <Route path="/posts" element={<Feed navigate={useNavigate()} />} />
-      <Route path="/login" element={<LoginForm navigate={useNavigate()} />} />
-      <Route path="/signup" element={<SignUpForm navigate={useNavigate()} />} />
-      <Route
-        path="/new_post"
-        element={<NewPostForm navigate={useNavigate()} />}
-      />
+      <Route exact path="/" element={<Home />}></Route>
+      <Route exact path="/profile" element={<Profile />}></Route>
+      <Route exact path="posts/" element={<Feed />}></Route>
+      <Route exact path="/login" element={<LoginForm />}></Route>
+      <Route exact path="/signup" element={<SignUpForm />}></Route>
+      <Route exact path="/new_post" element={<NewPostForm />}></Route>
+
     </Routes>
   );
 };
 
 
 export default App;
+
+      // <Route path="/profile" element={<Profile navigate={useNavigate()} />} />
+      // <Route path="/posts" element={<Feed navigate={useNavigate()} />} />
+      // <Route path="/login" element={<LoginForm navigate={useNavigate()} />} />
+      // <Route path="/signup" element={<SignUpForm navigate={useNavigate()} />} />
+      // <Route
+      //   path="/new_post"
+      //   element={<NewPostForm navigate={useNavigate()} />}
+      // />

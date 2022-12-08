@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const LogInForm = ({ navigate }) => {
+const LogInForm = ({  }) => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
 
     let response = await fetch("/tokens", {
@@ -18,6 +20,7 @@ const LogInForm = ({ navigate }) => {
     if (response.status !== 201) {
       console.log("yay");
       navigate("/login");
+
     } else {
       console.log("oop");
       let data = await response.json();

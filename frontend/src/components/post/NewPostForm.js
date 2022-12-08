@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const NewPostForm = ({ navigate }) => {
+const NewPostForm = ({}) => {
+  const navigate = useNavigate()
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [content, setContent] = useState("");
 
