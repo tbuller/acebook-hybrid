@@ -11,7 +11,6 @@ const Profile = ({ navigate }) => {
   const [password, setPassword] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [isChanging, setIsChanging] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
 
 
   useEffect(() => {
@@ -112,38 +111,9 @@ const Profile = ({ navigate }) => {
           <h1>Profile Page</h1>
           <button onClick={feed}>Go to Feed</button>
         </div>
-        <img src={user.photo} width={300} height={300} alt="default" />
-        {/* {setSelectedImage(user.photo)} */}
-        {/* <img
-          src={URL.createObjectURL(selectedImage)}
-          width={300}
-          height={300}
-          alt="default"
-        /> */}
-        {/* {URL.createObjectURL(selectedImage)} */}
+        <img src={user.photo} width={250} height={250} alt="default" />
         <h2>Hello, {user.fullname}!</h2>
-        {/* <UploadAndDisplayImage key="something" /> */}
-        <p>Upload a new profile photo</p>
-        {selectedImage && (
-          <div>
-            <img
-              alt="not found"
-              width={"250px"}
-              src={URL.createObjectURL(selectedImage)}
-            />
-            <br />
-            <button onClick={() => setSelectedImage(null)}>Remove</button>
-          </div>
-        )}
-        <input
-          type="file"
-          name="myImage"
-          onChange={(event) => {
-            console.log(event.target.files[0]);
-            //somehow update what I need on the User document in Mongo with a fetch POST request with photo: event.target.files[0] as a string
-            setSelectedImage(event.target.files[0]);
-          }}
-        />
+        <UploadAndDisplayImage key="something" />
         <br />
         <br />
         <form onSubmit={handleSubmit}>
