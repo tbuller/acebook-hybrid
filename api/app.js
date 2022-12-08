@@ -15,12 +15,20 @@ const myPostsRouter = require("./routes/myPosts")
 
 const app = express();
 
+
+
 // setup for receiving JSON
 app.use(express.json());
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+// changed to "build" from "public" below
+app.use(express.static(path.join(__dirname, "build")));
+
+// NEW STUFF FOR DEPLOY
+app.get('/*', function(req,res) {
+		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {
