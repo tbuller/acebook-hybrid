@@ -1,6 +1,6 @@
 const Cors = {
   Options: (req, res) => {
-    res.status(200);
+    res.sendStatus(200);
   },
 };
 module.exports = Cors;
