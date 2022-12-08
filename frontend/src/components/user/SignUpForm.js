@@ -10,7 +10,7 @@ const SignUpForm = ({ }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch("/users", {
+    fetch("https://acebook-api.onrender.com/users", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
