@@ -22,6 +22,12 @@ const LogInForm = ({ navigate }) => {
       console.log("oop");
       let data = await response.json();
       window.localStorage.setItem("token", data.token);
+      // Nasty solution fix later
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 500);
+      console.log("page to reload");
+
       navigate("/posts");
     }
   };

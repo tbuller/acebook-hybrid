@@ -13,6 +13,7 @@ const Navbar = ({ navigate }) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   const location = useLocation();
+  
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -63,7 +64,7 @@ const Navbar = ({ navigate }) => {
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/login" >
+          <NavBtnLink to="/login">
            Log In
           </NavBtnLink>
         </NavBtn>
