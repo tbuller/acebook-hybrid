@@ -3,7 +3,7 @@ import "./App.css";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../user/SignUpForm";
 import NewPostForm from "../post/NewPostForm";
-import Profile from "../profile/profile";
+import Profile from "../profile/Profile";
 import Home from "../home/Home";
 import React, { useState } from "react";
 import Feed from "../feed/Feed";

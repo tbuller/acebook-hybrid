@@ -1,6 +1,11 @@
 import React from "react";
 
 const renderRecentComment = (post) => {
+
+  //look up user here by doing Get request (using fetch API) 
+  //sending it the post.comments.user as the id to lookup and return the user object
+  // if user's fullname doesn't exist then put a default placeholder in
+  // can do the same and present an image of their face below the name, including default
   
   if (post.comments.length > 0)
   
