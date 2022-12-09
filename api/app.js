@@ -36,7 +36,7 @@ const tokenChecker = (req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.setHeader("Access-Control-Allow-Headers", "authorization, *");
+    res.setHeader("Access-Control-Allow-Headers", "Authorization, *");
   }
   let token;
   const authHeader = req.get("Authorization");
