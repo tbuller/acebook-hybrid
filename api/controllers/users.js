@@ -13,7 +13,7 @@ const UsersController = {
     });
   },
   UpdateUser: (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     req.body.UserId = req.user_id;
     let updateObj;
     if (req.body.fullname) {
@@ -37,6 +37,16 @@ const UsersController = {
   },
   ShowUser: (req, res) => {
     User.findById(req.user_id, async (err, userInfo) => {
+      if (err) {
+        throw err;
+      }
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ userInfo: userInfo, token: token });
+    });
+  },
+  ShowUser2: (req, res) => {
+    // console.log("hitting here controller / ShowUser2")
+    User.findById(req.body.userLookup, async (err, userInfo) => {
       if (err) {
         throw err;
       }

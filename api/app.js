@@ -13,6 +13,7 @@ const commentsRouter = require("./routes/comments");
 const likesRouter = require("./routes/likes");
 const profilesRouter = require("./routes/profiles");
 const myPostsRouter = require("./routes/myPosts");
+const myPosterLookupRouter = require("./routes/posterLookup");
 
 const app = express();
 app.use(fileUpload());
@@ -52,6 +53,7 @@ app.use("/users", usersRouter);
 app.use("/likes", tokenChecker, likesRouter);
 app.use("/profiles", tokenChecker, profilesRouter);
 app.use("/myPosts", tokenChecker, myPostsRouter);
+app.use("/posterLookup", tokenChecker, myPosterLookupRouter);
 
 app.use("/upload", tokenChecker, (req, res) => {
   //TODO add tokenChecker
