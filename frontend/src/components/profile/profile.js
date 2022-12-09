@@ -21,7 +21,7 @@ const Profile = ({ }) => {
 },[isChanging]); //add dependency into the blank array here to get page refreshing automatically
 
   const getUserDoc = () => {
-    fetch("/profiles", {
+    fetch("https://acebook-api.onrender.com/profiles", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -35,18 +35,18 @@ const Profile = ({ }) => {
     };
     
     const getUserPosts = () => {
-      fetch("/myPosts", {
+      fetch("https://acebook-api.onrender.com/myPosts", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => response.json())
-      .then(async (data2) => {
-        window.localStorage.setItem("token", data2.token);
-        setToken(window.localStorage.getItem("token"));
-        setUserPosts(data2.posts);
-        setIsChanging(false)
-      });
+        .then((response) => response.json())
+        .then(async (data2) => {
+          window.localStorage.setItem("token", data2.token);
+          setToken(window.localStorage.getItem("token"));
+          setUserPosts(data2.posts);
+          setIsChanging(false);
+        });
     };
     
 
@@ -63,7 +63,7 @@ const Profile = ({ }) => {
     } else if (aboutMe.length > 0) {
       fieldUpdate = { aboutMe: aboutMe };
     }
-    fetch("/profiles", {
+    fetch("https://acebook-api.onrender.com/profiles", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
