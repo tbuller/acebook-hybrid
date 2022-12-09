@@ -1,3 +1,5 @@
+// CHANGE RESPONSE ON OPTIONS REQUEST TO INCLUDE HEADER ALLOW ORIGIN SOMETHING LOOK AT CONSOLE ERROR IN DEPLOY SERVER
+
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -8,14 +10,11 @@ const postsRouter = require("./routes/posts");
 const tokensRouter = require("./routes/tokens");
 const usersRouter = require("./routes/users");
 const commentsRouter = require("./routes/comments");
-const likesRouter = require("./routes/likes")
-const profilesRouter = require("./routes/profiles")
-const myPostsRouter = require("./routes/myPosts")
-
+const likesRouter = require("./routes/likes");
+const profilesRouter = require("./routes/profiles");
+const myPostsRouter = require("./routes/myPosts");
 
 const app = express();
-
-
 
 // setup for receiving JSON
 app.use(express.json());
@@ -26,14 +25,21 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 // NEW STUFF FOR DEPLOY
-app.get('/*', function(req,res) {
-		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {
   if (req.method === "OPTIONS") {
     res.sendStatus(200);
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+    );
   }
   let token;
   const authHeader = req.get("Authorization");
