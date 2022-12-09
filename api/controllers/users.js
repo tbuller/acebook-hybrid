@@ -29,6 +29,7 @@ const UsersController = {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.setHeader("Content-Type", "application/json");
       res.status(201).json({ message: "OK", token: token }); //OK here needed to be in quotes
     });
   },
@@ -38,6 +39,7 @@ const UsersController = {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.setHeader("Content-Type", "application/json");
       res.status(200).json({ userInfo: userInfo, token: token });
     });
   },

@@ -9,6 +9,8 @@ const PostsController = {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.setHeader("Content-Type", "application/json");
+
       res.status(200).json({ posts: posts, token: token });
     }).sort({ time: -1 });
   },
@@ -23,6 +25,8 @@ const PostsController = {
       }
 
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.setHeader("Content-Type", "application/json");
+
       res.status(201).json({ message: "OK", token: token });
     });
   },
@@ -45,17 +49,21 @@ const PostsController = {
           throw err;
         }
         const token = await TokenGenerator.jsonwebtoken(req.user_id);
+        res.setHeader("Content-Type", "application/json");
+
         res.status(201).json({ message: "OK", token: token });
       }
     );
   },
   ShowMyPosts: (req, res) => {
     req.body.posterUserId = req.user_id;
-    Post.find({posterUserId: req.user_id}, async (err, posts) => {
+    Post.find({ posterUserId: req.user_id }, async (err, posts) => {
       if (err) {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.setHeader("Content-Type", "application/json");
+
       res.status(200).json({ posts: posts, token: token });
     }).sort({ time: -1 });
   },
