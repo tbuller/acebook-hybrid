@@ -1,0 +1,69 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #2f7c0b;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+}
+
+.Auth-form-content {
+  padding-bottom: 10%;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.Auth-form-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Auth-form {
+  text-align: center;
+  width: 600px;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background-color: rgb(200, 80, 80);
+  color: rgb(255, 255, 255);
+}
+
+body {
+  background-color: #2f2003;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: white;
+}
+
+button {
+  padding: 0.75em;
+  margin: 15px;
+  border: none;
+  outline: none;
+  background-color: grey;
+  color: white;
+  border-radius: 0.25em;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(90, 90, 90);
+  box-sizing: border-box;
+}

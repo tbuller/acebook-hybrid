@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react";
+import "./Home.css";
 
-const Home = ({navigate}) => {    
+const Home = ({ navigate }) => {
+  const signup = () => {
+    navigate("/signup");
+  };
+
+  const login = () => {
+    navigate("/login");
+  };
+
   return (
-    <>
-    <div>
-      <h1>Hello there!</h1>
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h1>Welcome to the Mineshaft!</h1>
+        </div>
+        <div>
+          <p>Select below where you'd like to go</p>
+          <button onClick={login}>Login</button>
+          <button onClick={signup}>Sign up</button>
+        </div>
+      </form>
     </div>
-    <div>
-        <body>
-            <p>Select below where you'd like to go</p>
-            <a href="/login"><button>Login</button></a>
-            <a href="/signup"><button>Sign up</button></a>
-        </body>
-    </div>
-    </>
   );
-}
-
-
+};
 
 export default Home;

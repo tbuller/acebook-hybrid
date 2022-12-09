@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import UploadAndDisplayImage from "./UploadPhoto";
+import "./Profile.css";
 
 const Profile = ({ navigate }) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
@@ -11,7 +12,6 @@ const Profile = ({ navigate }) => {
   const [password, setPassword] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [isChanging, setIsChanging] = useState("");
-
 
   useEffect(() => {
     if (token) {
@@ -101,90 +101,96 @@ const Profile = ({ navigate }) => {
     navigate("/posts");
   };
 
-/////1 switch what's presented to be selectedImage, which starts off being user.photo until changed
-  ////2 
+  /////1 switch what's presented to be selectedImage, which starts off being user.photo until changed
+  ////2
 
   if (token) {
     return (
       <>
-        <div>
-          <h1>Profile Page</h1>
-          <button onClick={feed}>Go to Feed</button>
-        </div>
-        <img src={user.photo} width={250} height={250} alt="default" />
-        <h2>Hello, {user.fullname}!</h2>
-        <UploadAndDisplayImage key="something" />
-        <br />
-        <br />
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Enter new name..."
-            id="fullname"
-            type="text"
-            value={fullname}
-            onChange={handleFullnameChange}
-          />
-          <input id="submit" type="submit" value="Update your profile name" />
-        </form>
-        <div>
-          <p>You are logged in on: {user.email}</p>
-          <form onSubmit={handleSubmit}>
-            <input
-              placeholder="Enter new email..."
-              id="email"
-              type="text"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <input
-              id="submit"
-              type="submit"
-              value="Update your email address"
-            />
-          </form>
-          <p>
-            Shhh, don't tell anyone, but your current password is:{" "}
-            {user.password}
-          </p>
-          <form onSubmit={handleSubmit}>
-            <input
-              placeholder="Enter new password..."
-              id="password"
-              type="text"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <input id="submit" type="submit" value="Update your password" />
-          </form>
-          <p>
-            What you're currently telling other people about yourself:{" "}
-            {user.aboutMe}
-          </p>
-          <form onSubmit={handleSubmit}>
-            <input
-              placeholder="Enter new bio..."
-              id="aboutMe"
-              type="text"
-              value={aboutMe}
-              onChange={handleAboutMeChange}
-            />
-            <input
-              id="submit"
-              type="submit"
-              value="Update your About Me info"
-            />
-          </form>
-        </div>
-        <div id="myPostFeed" role="myFeed">
-          <p></p>
-          BELOW ARE ALL MY POSTS
-          <p></p>
-          {userPosts.map((post) => (
+        <div className="Auth-form-container">
+          <form className="Auth-form">
+            <div className="Auth-form-content"></div>
             <div>
-              <Post post={post} key={post._id} />
-              <p></p>
+              <h1>Profile Page</h1>
+              <button onClick={feed}>Go to Feed</button>
             </div>
-          ))}
+            <img src={user.photo} width={250} height={250} alt="default" />
+            <h2>Hello, {user.fullname}!</h2>
+            <UploadAndDisplayImage key="something" />
+            <br />
+            <br />
+            <form onSubmit={handleSubmit} className="form-content">
+              <input
+                placeholder="Enter new name..."
+                id="fullname"
+                type="text"
+                value={fullname}
+                onChange={handleFullnameChange}
+              />
+              <input
+                id="submit"
+                type="submit"
+                value="Update your profile name"
+              />
+            </form>
+            <div>
+              <label>You are logged in on: {user.email}</label>
+              <form onSubmit={handleSubmit} className="form-content">
+                <input
+                  placeholder="Enter new email..."
+                  id="email"
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <input
+                  id="submit"
+                  type="submit"
+                  value="Update your email address"
+                />
+              </form>
+              <label>
+                Shhh, don't tell anyone, but your current password is:{" "}
+                {user.password}
+              </label>
+              <form onSubmit={handleSubmit} className="form-content">
+                <input
+                  placeholder="Enter new password..."
+                  id="password"
+                  type="text"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+                <input id="submit" type="submit" value="Update your password" />
+              </form>
+              <label>
+                What you're currently telling other people about yourself:{" "}
+                {user.aboutMe}
+              </label>
+              <form onSubmit={handleSubmit} className="form-content">
+                <input
+                  placeholder="Enter new bio..."
+                  id="aboutMe"
+                  type="text"
+                  value={aboutMe}
+                  onChange={handleAboutMeChange}
+                />
+                <input
+                  id="submit"
+                  type="submit"
+                  value="Update your About Me info"
+                />
+              </form>
+            </div>
+            <div id="myPostFeed" role="myFeed" className="myPostFeed">
+              <label>BELOW ARE ALL MY POSTS</label>
+              {userPosts.map((post) => (
+                <div className="Post-form">
+                  <Post post={post} key={post._id} />                                    
+                </div>                                                
+              ))}             
+            </div>
+          </form>
         </div>
       </>
     );

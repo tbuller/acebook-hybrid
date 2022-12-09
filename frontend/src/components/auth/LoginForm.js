@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LoginForm.css";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -41,23 +42,45 @@ const LogInForm = ({ navigate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Email"
-        id="email"
-        type="text"
-        value={email}
-        onChange={handleEmailChange}
-      />
-      <input
-        placeholder="Password"
-        id="password"
-        type="password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <input role="submit-button" id="submit" type="submit" value="Submit" />
-    </form>
+    <div className="Auth-form-container">
+      <div className="Auth-form-content">
+        <h3 className="Auth-form-title">Log In</h3>
+        <div className="form-group mt-3">
+          <form onSubmit={handleSubmit} className="Auth-form">
+            <div className="form-group mt-2">
+              <label>Email Address</label>
+              <input
+                placeholder="Email"
+                id="email"
+                type="text"
+                value={email}
+                onChange={handleEmailChange}
+                className="form-control mt-1"
+              />
+            </div>
+            <div className="form-group mt-3">
+              <label>Password</label>
+              <input
+                placeholder="Password"
+                id="password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                className="form-control mt-1"
+              />
+            </div>
+            <div className="d-grid gap-2 mt-3">
+              <input
+                role="submit-button"
+                id="submit"
+                type="submit"
+                value="Submit"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
