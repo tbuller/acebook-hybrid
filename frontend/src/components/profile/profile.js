@@ -182,13 +182,13 @@ const Profile = ({ navigate }) => {
                 />
               </form>
             </div>
-            <div id="myPostFeed" role="myFeed">
+            <div id="myPostFeed" role="myFeed" className="myPostFeed">
               <label>BELOW ARE ALL MY POSTS</label>
               {userPosts.map((post) => (
                 <div className="Post-form">
-                  <Post post={post} key={post._id} />
-                </div>
-              ))}
+                  <Post post={post} key={post._id} />                                    
+                </div>                                                
+              ))}             
             </div>
           </form>
         </div>
