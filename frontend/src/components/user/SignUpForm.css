@@ -1,7 +1,3 @@
-.App {
-  background-color: white;
-}
-
 .Auth-form-container {
   text-align: center;
   display: flex;
@@ -54,7 +50,7 @@ input {
 }
 
 label {
-  padding-right: 3%;
+  text-align: center;
   font-size: 14px;
   font-weight: 600;
   color: rgb(255, 255, 255);
