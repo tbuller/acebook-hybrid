@@ -32,6 +32,7 @@ const Feed = ({ navigate }) => {
 
   const like = (post) => {
     console.log(`liked ${post._id}`);
+    console.log(req.user_id);
 
     fetch("/likes", {
       method: "post",
