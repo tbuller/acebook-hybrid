@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import NewCommentForm from "../post/NewComment";
 
+
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  
 
   useEffect(() => {
     if (token) {
