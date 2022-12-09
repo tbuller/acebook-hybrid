@@ -1,31 +1,57 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 const UploadAndDisplayImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
-  const updatePic = (newURL) => {
-    let fieldUpdate = { photo: `./${newURL}` };
-    // need to save new image to folder here
+  const updatePic = (newImageFile) => {
+    let fieldUpdate = { photo: `./${newImageFile.name}` };
+
+    if (newImageFile.size > 307200) {
+      alert("That file is TOO LARGE: max size is a measly 300Kb");
+      setSelectedImage(null);
+      return;
+    }
+
     fetch("/profiles", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(fieldUpdate), //add more fields here
+      body: JSON.stringify(fieldUpdate),
     }).then(async (response) => {
       if (response.status === 201) {
         const data = await response.json();
         window.localStorage.setItem("token", data.token);
         setToken(window.localStorage.getItem("token"));
       } else {
-        console.log("error updating photo");
+        console.log("error saving photo ref");
       }
     });
+
+    // add the file to the FormData object
+    const fd = new FormData();
+    fd.append("photo", newImageFile);
+
+    fetch("/upload", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: fd,
+    }).then(async (response) => {
+      if (response.status === 201) {
+        const data = await response.json();
+        window.localStorage.setItem("token", data.token);
+        setToken(window.localStorage.getItem("token"));
+      } else {
+        console.log("error saving photo ref");
+      }
+    });
+
     setSelectedImage(null);
-    window.location.reload(false);
+    // window.location.reload(false);
   };
 
   return (
@@ -41,7 +67,7 @@ const UploadAndDisplayImage = () => {
           />
           <br />
           <button onClick={() => setSelectedImage(null)}>Revert</button>
-          <button onClick={() => updatePic(selectedImage.name)}>
+          <button onClick={() => updatePic(selectedImage)}>
             Switch to this photo
           </button>
         </div>
@@ -49,10 +75,9 @@ const UploadAndDisplayImage = () => {
       <input
         type="file"
         name="myImage"
-        accept=".png, .jpg, .jpeg"
+        accept="image/*"
         onChange={(event) => {
           setSelectedImage(event.target.files[0]);
-          console.log(event.target.files[0].name);
         }}
       />
     </div>

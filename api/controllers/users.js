@@ -13,6 +13,7 @@ const UsersController = {
     });
   },
   UpdateUser: (req, res) => {
+    console.log(req.body)
     req.body.UserId = req.user_id;
     let updateObj;
     if (req.body.fullname) {

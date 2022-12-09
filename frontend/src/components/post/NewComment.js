@@ -21,7 +21,7 @@ const NewCommentForm = ({ navigate, post }) => {
         setToken(window.localStorage.getItem("token"));
         // navigate("/signup"); // TODO:  Navigation appears broken here. Not sure why.
       } else {
-        navigate("/login");
+        // navigate("/login");
       }
     });
   };

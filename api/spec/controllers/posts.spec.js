@@ -107,6 +107,7 @@ describe("/posts", () => {
       let allPosts = await Post.find();
       // console.log(allPosts[0].comments);
       expect(allPosts[0].comments.length).toEqual(1);
+      
     });
   });
 
