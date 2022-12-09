@@ -1,4 +1,5 @@
 .Auth-form-container {
+  padding-top: 10px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -14,6 +15,7 @@
 }
 
 .Auth-form {
+  padding-top: 10px;
   text-align: center;
   width: 600px;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
