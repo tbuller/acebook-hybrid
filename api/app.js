@@ -32,11 +32,12 @@ app.get("/*", function (req, res) {
 // middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {
   if (req.method === "OPTIONS") {
-    res.sendStatus(200);
+    res.status(200);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
     res.setHeader("Access-Control-Allow-Headers", "Authorization, *");
+    res.send()
   }
   let token;
   const authHeader = req.get("Authorization");
