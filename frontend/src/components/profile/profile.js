@@ -23,6 +23,8 @@ const Profile = ({ }) => {
   const getUserDoc = () => {
     fetch("https://acebook-api.onrender.com/profiles", {
       headers: {
+        "Content-Type": "application/json",
+       "Accept": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
@@ -37,6 +39,8 @@ const Profile = ({ }) => {
     const getUserPosts = () => {
       fetch("https://acebook-api.onrender.com/myPosts", {
         headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
           Authorization: `Bearer ${token}`,
         },
       })
@@ -67,6 +71,7 @@ const Profile = ({ }) => {
       method: "post",
       headers: {
         "Content-Type": "application/json",
+        'Accept': 'application/json',
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(fieldUpdate), //add more fields here
